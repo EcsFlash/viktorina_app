@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:viktorina_app/Tools/Helper.dart';
 import 'package:viktorina_app/Tools/constants.dart';
+import 'package:viktorina_app/data/capital_of_countries.dart';
 
 import 'commongame.dart';
 class CommonGameOptions extends StatefulWidget {
@@ -14,7 +17,7 @@ class _CommonGameOptionsState extends State<CommonGameOptions> {
   bool capitalOfCountries = false;
   bool countryByFlag = false;
   bool countryBySight = false;
-
+  Random random = Random();
   @override
   Widget build(BuildContext context) {
 
@@ -113,11 +116,13 @@ class _CommonGameOptionsState extends State<CommonGameOptions> {
                           )
                       ),
                       onPressed: () {
-                        print('ddd');
+
+                        int r = random.nextInt(CapitalOfCoutries().b.length);
+                        print('r');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (BuildContext context) => CommonGamePage()
+                                builder: (BuildContext context) => CommonGamePage(number: r,)
                             )
                         );
                       },
