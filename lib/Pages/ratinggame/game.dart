@@ -17,7 +17,7 @@ class GamePage extends StatelessWidget {
   final List<Data> questionList;
   final int questionNumber;
   GamePage({required this.questionNumber, required this.questionList});
-  Random random = Random();
+  final Random random = Random();
   final trueSnackBar = SnackBar(content: Text('Верно!'), backgroundColor: Colors.green, duration: Duration(milliseconds: 700),);
   final falseSnackBar = SnackBar(content: Text('Не верно! Попробуй еще раз!', ), backgroundColor: Colors.red, duration: Duration(milliseconds: 700),);
   @override
