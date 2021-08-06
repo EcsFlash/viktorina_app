@@ -1,11 +1,9 @@
-import 'dart:math';
 import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Stars extends ChangeNotifier{
   int stars = 0;
-  get getStars => stars;
+  int get getStars => stars;
   Future<void> addStars  () async {
     stars = stars + 1;
     SharedPreferences sp = await SharedPreferences.getInstance();
@@ -18,3 +16,4 @@ class Stars extends ChangeNotifier{
     notifyListeners();
   }
 }
+

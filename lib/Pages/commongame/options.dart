@@ -49,19 +49,19 @@ class _CommonGameOptionsState extends State<CommonGameOptions> {
               Container(
                 child: Column(
                   children: [
-                    CheckboxListTile(
-                      title: Text("Угадай страну по картинке(контуру)"),
-                      controlAffinity: ListTileControlAffinity.platform ,
-                      value: countryByPicture,
-                      onChanged: (bool? val){
-                        setState(() {
-                          countryByPicture = val!;
-                          print(countryByPicture);
-                        });
-                      },
-                      activeColor: Colors.amberAccent,
-                      checkColor: Colors.purple,
-                    ),
+                    // CheckboxListTile(
+                    //   title: Text("Угадай страну по картинке(контуру)"),
+                    //   controlAffinity: ListTileControlAffinity.platform ,
+                    //   value: countryByPicture,
+                    //   onChanged: (bool? val){
+                    //     setState(() {
+                    //       countryByPicture = val!;
+                    //       print(countryByPicture);
+                    //     });
+                    //   },
+                    //   activeColor: Colors.amberAccent,
+                    //   checkColor: Colors.purple,
+                    // ),
                     CheckboxListTile(
                       title: Text("Угадай столицу страны"),
                       controlAffinity: ListTileControlAffinity.platform ,
@@ -86,23 +86,23 @@ class _CommonGameOptionsState extends State<CommonGameOptions> {
                       activeColor: Colors.amberAccent,
                       checkColor: Colors.purple,
                     ),
-                    CheckboxListTile(
-                      title: Text("Угадай страну по достопримечательности"),
-                      controlAffinity: ListTileControlAffinity.platform ,
-                      value: countryBySight,
-                      onChanged: (bool? val){
-                        setState(() {
-                          countryBySight = val!;
-                        });
-                      },
-                      activeColor: Colors.amberAccent,
-                      checkColor: Colors.purple,
-                    ),
+              //       CheckboxListTile(
+              //         title: Text("Угадай страну по достопримечательности"),
+              //         controlAffinity: ListTileControlAffinity.platform ,
+              //         value: countryBySight,
+              //         onChanged: (bool? val){
+              //           setState(() {
+              //             countryBySight = val!;
+              //           });
+              //         },
+              //         activeColor: Colors.amberAccent,
+              //         checkColor: Colors.purple,
+              //       ),
                   ],
                 ),
               ),
 
-               // SizedBox(height: Helper.getHeight(context: context,factor: 0.23)),
+               SizedBox(height: Helper.getHeight(context: context,factor: 0.15)),
                Padding(
                  padding:  EdgeInsets.only(
                    bottom: Helper.getVerticalPadding(context: context, factor: 0.02,),
@@ -116,13 +116,12 @@ class _CommonGameOptionsState extends State<CommonGameOptions> {
                           )
                       ),
                       onPressed: () {
-
-                        int r = random.nextInt(CapitalOfCoutries().b.length);
+                        int r = random.nextInt(CapitalOfCountries().b.length);
                         print('r');
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (BuildContext context) => CommonGamePage(number: r,)
+                                builder: (BuildContext context) => CommonGamePage(number: r, cp: CapitalOfCountries().b,)
                             )
                         );
                       },
