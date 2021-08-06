@@ -141,7 +141,7 @@ class _RatingGameOptionsState extends State<RatingGameOptions> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (BuildContext context) => RatinGamePage(questionNumber: r, questionList: CapitalOfCountries().b)
+                                builder: (BuildContext context) => GamePage(questionNumber: r, questionList: CapitalOfCountries().b)
                             )
                         );
                       },

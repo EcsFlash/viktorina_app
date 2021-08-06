@@ -12,4 +12,8 @@ class Health extends ChangeNotifier{
     health = 10;
     notifyListeners();
   }
+  void addHealth(){
+    health = health + 1;
+    notifyListeners();
+  }
 }

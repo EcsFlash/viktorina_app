@@ -13,10 +13,10 @@ import 'package:viktorina_app/data/data.dart';
 
 import '../Home.dart';
 
-class RatinGamePage extends StatelessWidget {
-  List<Data> questionList;
-  int questionNumber;
-  RatinGamePage({required this.questionNumber, required this.questionList});
+class GamePage extends StatelessWidget {
+  final List<Data> questionList;
+  final int questionNumber;
+  GamePage({required this.questionNumber, required this.questionList});
   Random random = Random();
   final trueSnackBar = SnackBar(content: Text('Верно!'), backgroundColor: Colors.green, duration: Duration(milliseconds: 700),);
   final falseSnackBar = SnackBar(content: Text('Не верно! Попробуй еще раз!', ), backgroundColor: Colors.red, duration: Duration(milliseconds: 700),);
@@ -36,7 +36,7 @@ class RatinGamePage extends StatelessWidget {
                       children: [
                         Counter(stars: Provider.of<Stars>(context, listen: false).getStars),
                         Expanded(child: Container()),
-                        HelpButton(),
+                        HelpButton(questionList: questionList, questionNumber: questionNumber),
                         Expanded(child: Container()),
                         HealthCounter(health: context.watch<Health>().getHealth),
                       ],
@@ -136,17 +136,17 @@ class RatinGamePage extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(trueSnackBar);
       questionList.removeAt(questionNumber);
       if(questionList.length == 1){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => RatinGamePage(questionNumber: 0, questionList: questionList,)));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => GamePage(questionNumber: 0, questionList: questionList,)));
       } if(questionList.length == 0){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Home()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Home())); // тут должно перекидывать на страницу CongratulationsPage но руки не дошли)
       } if(questionList.length >= 2){
         int r = random.nextInt(questionList.length - 1);
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => RatinGamePage(questionNumber: r, questionList: questionList,)));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => GamePage(questionNumber: r, questionList: questionList,)));
       }
     } else {
       if(health <= 1 ) {
               context.read<Health>().decrementHealth();
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Home()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Home())); // а тут должно перекидывать на страницу GameOver, но задизайнить хоть как то ее руки не дошли)
             } else{
               context.read<Health>().decrementHealth();
               ScaffoldMessenger.of(context).showSnackBar(falseSnackBar);
