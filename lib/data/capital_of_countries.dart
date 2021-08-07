@@ -156,13 +156,13 @@ class CapitalOfCountries{
      Data(
          question: 'Столица Испании?',
          answer: 'Мадрид',
-         answers: ['Мадрид','Мадрид','Валенсия', 'Севилья'],
+         answers: ['Мадрид','Барселона','Валенсия', 'Севилья'],
          img: 'assets/26-spain.png'
      ),
      Data(
          question: 'Столица Белоруссии?',
          answer: 'Минск',
-         answers: ['Минск','Минск','Гродно', 'Могилёв'],
+         answers: ['Минск','Брест','Гродно', 'Могилёв'],
          img: 'assets/27-belarus.png'
      ),
      Data(

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:viktorina_app/Widgets/counter.dart';
 import 'package:viktorina_app/Widgets/healthCounter.dart';
 import 'package:viktorina_app/Widgets/help.dart';
+import 'package:viktorina_app/Widgets/questionCounter.dart';
 import 'package:viktorina_app/data/health.dart';
 import 'package:viktorina_app/data/stars.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,9 @@ import '../Home.dart';
 class GamePage extends StatelessWidget {
   final List<Data> questionList;
   final int questionNumber;
-  GamePage({required this.questionNumber, required this.questionList});
+  final int numberOfQuestionsAnswered;
+  final int startValue;
+  GamePage({required this.questionNumber, required this.questionList, required this.numberOfQuestionsAnswered, required this.startValue});
   final Random random = Random();
   final trueSnackBar = SnackBar(content: Text('Верно!'), backgroundColor: Colors.green, duration: Duration(milliseconds: 700),);
   final falseSnackBar = SnackBar(content: Text('Не верно! Попробуй еще раз!', ), backgroundColor: Colors.red, duration: Duration(milliseconds: 700),);
@@ -36,12 +39,13 @@ class GamePage extends StatelessWidget {
                       children: [
                         Counter(stars: Provider.of<Stars>(context, listen: false).getStars),
                         Expanded(child: Container()),
-                        HelpButton(questionList: questionList, questionNumber: questionNumber),
+                        HelpButton(questionList: questionList, questionNumber: questionNumber, numberOfQuestionsAnswered: numberOfQuestionsAnswered, startValue: startValue,),
                         Expanded(child: Container()),
                         HealthCounter(health: context.watch<Health>().getHealth),
                       ],
                     ),
                   ),
+                  QuestionCounter(numberOfQuestionsAnswered: numberOfQuestionsAnswered, startValue: startValue),
                   SizedBox(height: Helper.getHeight(context: context, factor: 0.07),),
                   Image.asset('${questionList[questionNumber].img}', width: Helper.getWidth(context: context, factor: 0.85), height: Helper.getHeight(context: context, factor: 0.35),),
                   SizedBox(height: Helper.getHeight(context: context, factor: 0.05),),
@@ -132,16 +136,17 @@ class GamePage extends StatelessWidget {
   }
   answerNavigation({required int answerNumber,required int questionNumber,required BuildContext context, required int health}){
     if (questionList[questionNumber].answers[answerNumber] == questionList[questionNumber].answer) {
+
       context.read<Stars>().addStars();
       ScaffoldMessenger.of(context).showSnackBar(trueSnackBar);
       questionList.removeAt(questionNumber);
       if(questionList.length == 1){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => GamePage(questionNumber: 0, questionList: questionList,)));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => GamePage(questionNumber: 0, questionList: questionList, numberOfQuestionsAnswered: numberOfQuestionsAnswered + 1,startValue: startValue,)));
       } if(questionList.length == 0){
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Home())); // тут должно перекидывать на страницу CongratulationsPage но руки не дошли)
       } if(questionList.length >= 2){
         int r = random.nextInt(questionList.length - 1);
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => GamePage(questionNumber: r, questionList: questionList,)));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => GamePage(questionNumber: r, questionList: questionList, numberOfQuestionsAnswered: numberOfQuestionsAnswered + 1, startValue: startValue,)));
       }
     } else {
       if(health <= 1 ) {

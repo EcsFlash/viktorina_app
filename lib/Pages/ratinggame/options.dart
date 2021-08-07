@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:viktorina_app/Tools/Helper.dart';
 import 'package:viktorina_app/Tools/constants.dart';
 import 'package:viktorina_app/data/capital_of_countries.dart';
+import 'package:viktorina_app/data/data.dart';
 import 'package:viktorina_app/data/health.dart';
 import 'package:provider/provider.dart';
 import 'game.dart';
@@ -130,6 +131,7 @@ class _RatingGameOptionsState extends State<RatingGameOptions> {
                           )
                       ),
                       onPressed: () {
+                        List<Data> questionList = CapitalOfCountries().b;
                         context.read<Health>().setHealth();
                         int r = random.nextInt(CapitalOfCountries().b.length);
                         // Navigator.push(
@@ -141,7 +143,7 @@ class _RatingGameOptionsState extends State<RatingGameOptions> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (BuildContext context) => GamePage(questionNumber: r, questionList: CapitalOfCountries().b)
+                                builder: (BuildContext context) => GamePage(questionNumber: r, questionList: questionList, numberOfQuestionsAnswered: 0, startValue: questionList.length)
                             )
                         );
                       },

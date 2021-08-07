@@ -5,3 +5,7 @@ class Data{
   String answer;
   String question;
 }
+
+class QA{
+  int numberOfQuestionsAnswered = 0;
+}
