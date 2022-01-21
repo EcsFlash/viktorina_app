@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 class QuestionCounter extends StatelessWidget {
-  final int numberOfQuestionsAnswered;
-  final int startValue;
-  QuestionCounter({required this.numberOfQuestionsAnswered, required this.startValue});
+  final String n;
+  QuestionCounter(this.n);
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -12,7 +11,7 @@ class QuestionCounter extends StatelessWidget {
         child: Container(
           child: Column(
             children: [
-              Text('Вопрос ${numberOfQuestionsAnswered + 1}/$startValue')
+              Text('Вопрос $n')
             ],
           ),
         )

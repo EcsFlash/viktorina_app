@@ -1,27 +1,26 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 
 import 'package:viktorina_app/Pages/splashScreen.dart';
 
-import 'package:viktorina_app/data/health.dart';
 
-import 'data/stars.dart';
-Future main() async {
-  // SharedPreferences sp = await SharedPreferences.getInstance();
-  // start(sp, context);
+
+import 'Widgets/help.dart';
+
+void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  // static StarsError starsError = new StarsError();
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<Health>(create: (_) => Health()),
-        ChangeNotifierProvider<Stars>(create: (_) => Stars()),
-      ],
-    child: MaterialApp(
+
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Географическая Викторина',
       theme: ThemeData(
@@ -29,8 +28,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: SplashScreen(),
-    ),
     );
+
   }
 
 }

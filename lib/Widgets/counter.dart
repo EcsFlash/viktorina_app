@@ -6,7 +6,7 @@ class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: Helper.getWidth(context: context, factor: 0.16),
+        width: Helper.getWidth(context: context, factor: 0.25),
         child: Material(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30.0)
