@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 
-import 'package:viktorina_app/Pages/splashScreen.dart';
+import 'package:geoquiz/Pages/splashScreen.dart';
 
 
 

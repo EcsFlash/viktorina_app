@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:viktorina_app/Pages/gameLogic.dart';
-import 'package:viktorina_app/Tools/Helper.dart';
-import 'package:viktorina_app/Widgets/counter.dart';
-import 'package:viktorina_app/Widgets/healthCounter.dart';
-import 'package:viktorina_app/Widgets/questionCounter.dart';
-import 'package:viktorina_app/data/data.dart';
+import 'package:geoquiz/Pages/gameLogic.dart';
+import 'package:geoquiz/Tools/Helper.dart';
+import 'package:geoquiz/Widgets/counter.dart';
+import 'package:geoquiz/Widgets/healthCounter.dart';
+import 'package:geoquiz/Widgets/questionCounter.dart';
+import 'package:geoquiz/data/data.dart';
 
 import 'Home.dart';
 
@@ -98,6 +98,9 @@ class _GameUIState extends State<GameUI> {
                   ),
 
                 ),
+                SizedBox(
+                  height: Helper.getHeight(context: context, factor: 0.015),
+                ),
                 StreamBuilder<String>(
                   stream: gameLogic.questionCounterStream,
                   builder: (context, snapshot) {
@@ -127,6 +130,9 @@ class _GameUIState extends State<GameUI> {
                               if(snapshot.data!.type == 'l') ...[
                                 Text(snapshot.data!.question,
                                   style: TextStyle(fontSize: 20),),
+                                SizedBox(
+                                  height: Helper.getHeight(context: context, factor: 0.08),
+                                ),
                                 Container(
                                   padding: EdgeInsets.symmetric(
                                       horizontal: Helper.getHorizontalPadding(
@@ -236,16 +242,17 @@ class _GameUIState extends State<GameUI> {
 
                               if(snapshot.data!.type == 'l2') ...[
                                 Text(snapshot.data!.question2,
-                                  style: TextStyle(fontSize: 20),),
-
+                                  style: TextStyle(fontSize: 20), textAlign: TextAlign.center,),
+                                SizedBox(
+                                  height: Helper.getHeight(context: context, factor: 0.07),
+                                ),
                                 Container(
                                   padding: EdgeInsets.symmetric(
                                       horizontal: Helper.getHorizontalPadding(
                                           context: context, factor: 0.05)),
                                   child: Row(
                                     //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Expanded(
                                         child: ElevatedButton(
@@ -286,7 +293,7 @@ class _GameUIState extends State<GameUI> {
                                   ),
                                 ),
                                 SizedBox(height: Helper.getHeight(
-                                    context: context, factor: 0.1),),
+                                    context: context, factor: 0.08),),
                                 Container(
                                   padding: EdgeInsets.only(
                                       left: Helper.getHorizontalPadding(
@@ -345,7 +352,7 @@ class _GameUIState extends State<GameUI> {
                               ],
 
 
-                              if(snapshot.data!.type == 's') ...[
+                              /*if(snapshot.data!.type == 's') ...[
                                 Text('Автор данного фото: ${snapshot.data!
                                     .author}'),
                                 Text(snapshot.data!.question3,
@@ -407,7 +414,7 @@ class _GameUIState extends State<GameUI> {
 
 
                               ]
-
+*/
                             ]
                         );
                       }
@@ -420,8 +427,9 @@ class _GameUIState extends State<GameUI> {
             ),
           ),
           floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.exit_to_app),
             onPressed: () {
-              gameLogic.addStars();
+              gameLogic.gameOver();
             },
           ),
         ),

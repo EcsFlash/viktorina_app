@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:viktorina_app/Pages/gameUI.dart';
-import 'package:viktorina_app/Tools/Helper.dart';
-import 'package:viktorina_app/Tools/constants.dart';
+import 'package:geoquiz/Pages/gameUI.dart';
+import 'package:geoquiz/Tools/Helper.dart';
+import 'package:geoquiz/Tools/constants.dart';
 
 
 class RatingGameOptions extends StatefulWidget {
@@ -27,7 +27,7 @@ class _RatingGameOptionsState extends State<RatingGameOptions> {
     return Scaffold(
       body: SafeArea(
         child: Stack(children: [
-          Container(
+          /*Container(
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: ExactAssetImage('assets/bg1.jpg'),
@@ -40,7 +40,7 @@ class _RatingGameOptionsState extends State<RatingGameOptions> {
                 decoration: BoxDecoration(color: Colors.white.withOpacity(0.0)),
               ),
             ),
-          ),
+          ),*/
 
           // Container(color: Color.fromRGBO(38, 150, 161, 1.0), child: Padding(
           //   padding:  EdgeInsets.only(top: Helper.getVerticalPadding(context: context, factor: 0.2)),
@@ -62,7 +62,7 @@ class _RatingGameOptionsState extends State<RatingGameOptions> {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    'Выбери категори-(ю/и)',
+                    'Выбери категории',
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,
@@ -71,7 +71,7 @@ class _RatingGameOptionsState extends State<RatingGameOptions> {
                 ),
                 SizedBox(
                     height: Helper.getHeight(context: context, factor: 0.18)),
-                CheckboxListTile(
+                /*CheckboxListTile(
                   title: Text("Угадай страну по фото"),
                   controlAffinity: ListTileControlAffinity.platform,
                   value: countryByPicture,
@@ -83,7 +83,7 @@ class _RatingGameOptionsState extends State<RatingGameOptions> {
                   },
                   activeColor: Colors.amberAccent,
                   checkColor: Colors.purple,
-                ),
+                ),*/
                 CheckboxListTile(
                   title: Text("Угадай столицу страны"),
                   controlAffinity: ListTileControlAffinity.platform,
@@ -98,8 +98,7 @@ class _RatingGameOptionsState extends State<RatingGameOptions> {
                 ),
                 CheckboxListTile(
                   title: Text(
-                    "Hello world",
-                    style: TextStyle(fontSize: 18, fontFamily: 'Reef'),
+                    "Угадай страну по флагу"
                   ),
                   controlAffinity: ListTileControlAffinity.platform,
                   value: countryByFlag,

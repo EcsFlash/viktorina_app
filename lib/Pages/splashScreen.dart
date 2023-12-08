@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
-import 'package:viktorina_app/Pages/Home.dart';
-import 'package:viktorina_app/Tools/constants.dart';
+import 'package:geoquiz/Pages/Home.dart';
+import 'package:geoquiz/Tools/constants.dart';
 
 
 class SplashScreen extends StatelessWidget {

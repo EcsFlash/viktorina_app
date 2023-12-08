@@ -1,4 +1,4 @@
-import 'package:viktorina_app/data/data.dart';
+import 'package:geoquiz/data/data.dart';
 
 
 

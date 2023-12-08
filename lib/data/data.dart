@@ -32,7 +32,7 @@ class Question{
   String cityName;
   String question;
   final type; //l - long, l2 - long, s - short
-  late String question2 = 'Флаг какой страны показан на картинке?';
+  late String question2 = 'Флаг какой страны показан \n на картинке?';
   late String question3 = 'Это $cityName?';
   final List<String> answers;
   final String img;

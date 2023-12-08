@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:viktorina_app/Pages/ratinggame/options.dart';
-import 'package:viktorina_app/Tools/constants.dart';
-import 'package:viktorina_app/Widgets/counter.dart';
-import 'package:viktorina_app/data/stars.dart';
+import 'package:geoquiz/Pages/ratinggame/options.dart';
+import 'package:geoquiz/Tools/constants.dart';
+import 'package:geoquiz/Widgets/counter.dart';
+import 'package:geoquiz/data/stars.dart';
 import '../Tools/Helper.dart';
 import 'gameLogic.dart';
 
@@ -43,12 +43,7 @@ class Home extends StatelessWidget {
                    children: [
                      Row(
                        children: [
-                         IconButton(
-                           icon: Icon(Icons.flutter_dash),
-                           onPressed: () {
 
-                           },
-                         ),
                          Expanded(child: Container()),
                          StreamBuilder<int>(
                            stream: gameLogic.starStream,

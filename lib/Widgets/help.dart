@@ -3,14 +3,14 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:viktorina_app/Pages/Home.dart';
+import 'package:geoquiz/Pages/Home.dart';
 
-import 'package:viktorina_app/Tools/Helper.dart';
+import 'package:geoquiz/Tools/Helper.dart';
 import 'package:provider/provider.dart';
-import 'package:viktorina_app/data/data.dart';
+import 'package:geoquiz/data/data.dart';
 
-import 'package:viktorina_app/data/stars.dart';
-import 'package:viktorina_app/main.dart';
+import 'package:geoquiz/data/stars.dart';
+import 'package:geoquiz/main.dart';
 
 
 // class HelpButton extends StatelessWidget {

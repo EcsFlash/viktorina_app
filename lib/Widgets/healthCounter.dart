@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:viktorina_app/Tools/Helper.dart';
+import 'package:geoquiz/Tools/Helper.dart';
 class HealthCounter extends StatelessWidget {
   final int health;
   HealthCounter({required this.health});

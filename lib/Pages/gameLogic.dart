@@ -4,10 +4,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:viktorina_app/data/capital_of_countries.dart';
-import 'package:viktorina_app/data/country_by_flag.dart';
-import 'package:viktorina_app/data/country_by_picture.dart';
-import 'package:viktorina_app/data/data.dart';
+import 'package:geoquiz/data/capital_of_countries.dart';
+import 'package:geoquiz/data/country_by_flag.dart';
+import 'package:geoquiz/data/country_by_picture.dart';
+import 'package:geoquiz/data/data.dart';
 
 class GameLogic {
   int _numberOfQuestions = 0;

@@ -1,4 +1,4 @@
-package com.niowo.viktorina_app
+package com.nif.nif.geoquiz
 
 import io.flutter.embedding.android.FlutterActivity
 
