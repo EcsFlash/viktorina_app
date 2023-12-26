@@ -11,7 +11,7 @@ import 'package:geoquiz/data/data.dart';
 
 class GameLogic {
   int _numberOfQuestions = 0;
-  int _numberOfCurrentQuestion = 1;
+  int _numberOfCurrentQuestion = 0;
   int _stars = 0;
   int _health = 0;
   List questionList = [];
@@ -49,14 +49,11 @@ class GameLogic {
     _starStreamController.add(_stars);
   }
   Future<void> setHealth() async{
-    print('setting health');
+
     _health = 10;
     _healthStreamController.add(_health);
   }
-  void addHealth(){
-    _health = _health + 1;
-    _healthStreamController.add(_health);
-  }
+
   void decrementHealth(){
     if(_health > 1) {
       _health = _health - 1;
@@ -67,52 +64,53 @@ class GameLogic {
     _healthStreamController.add(_health);
   }
 
-  void setQuestionList({required bool coc,required bool cbf, required bool cbp}){
+  void setQuestionList({required bool coc,required bool cbf}){
     if(coc){
       questionList = questionList + CapitalOfCountries().b;
     }
     if(cbf){
       questionList = questionList + CountryByFlag().b;
     }
-    if(cbp){
-      questionList = questionList + CityByPic().b;
-    }
+
     _numberOfQuestions = questionList.length;
-    print('set question list');
+    questionCounter();
+
   }
 
   void getQuestion(){
-    questionStream.listen((event) {print('ss'+event.toString());});
+
     if(questionList.length == 0){
       gameOver();
     }
-    if(questionList.length == 1){
-      _questionStreamController.add(questionList.first);
-      print(questionList.first);
-      currentQuestion = questionList.first;
-      questionList.removeAt(0);
-      gameOver();
-    }
-    if(questionList.length > 1){
+    // if(questionList.length == 1){
+    //   _questionStreamController.add(questionList.first);
+    //   print(questionList.first);
+    //   currentQuestion = questionList.first;
+    //   questionList.removeAt(0);
+    //   gameOver();
+    // }
+    // if(questionList.length > 1){
+    if(questionList.length > 0){
       int num = random.nextInt(questionList.length);
       _questionStreamController.add(questionList[num]);
       currentQuestion = questionList[num];
       questionList.removeAt(num);
+      incrementNumOfAnsweredQuestion();
     }
-    print('getting question');
-    questionCounter();
+
+
   }
 
   void onAnswer(String answer){
     if(currentQuestion.answer == answer){
       addStars();
       getQuestion();
-      incrementNumOfAnsweredQuestion();
+
     }
     else{
       decrementHealth();
       getQuestion();
-      incrementNumOfAnsweredQuestion();
+
     }
   }
 

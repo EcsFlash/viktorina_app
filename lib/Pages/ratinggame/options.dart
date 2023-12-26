@@ -122,14 +122,14 @@ class _RatingGameOptionsState extends State<RatingGameOptions> {
                   ),
                   onPressed: () {
                     if (countryByFlag ||
-                        countryByPicture ||
+
                         capitalOfCountries) {
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(builder: (BuildContext context) {
                           return GameUI(
                             cbf: countryByFlag,
-                            cbp: countryByPicture,
+
                             coc: capitalOfCountries,
                           );
                         }),

@@ -119,7 +119,7 @@ class CountryByFlag {
       answer: 'Сербия',
       answers: ['Лихтенштейн', 'Монголия', 'Сербия', 'Бельгия'],
     ),
-    Question(
+    /*Question(
       type: 'l2',
       img: 'assets/5-germany.png',
       answer: 'Германия',
@@ -634,7 +634,7 @@ class CountryByFlag {
       img: 'assets/91-saudi-arabia.png',
       answer: 'Саудовская Аравия',
       answers: ['Швеция', 'Мальта', 'Индонезия', 'Саудовская Аравия']
-    ),
+    ),*/
   ];
 }
 

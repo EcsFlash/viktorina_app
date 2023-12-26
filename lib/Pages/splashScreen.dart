@@ -17,7 +17,9 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(child: Lottie.asset('assets/4975-question-mark.json',
+            Container(
+              child: Lottie.asset(
+                'assets/4975-question-mark.json',
                 width: 200,
                 height: 200,
                 fit: BoxFit.fill,

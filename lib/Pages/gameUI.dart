@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geoquiz/Pages/gameLogic.dart';
+import 'package:geoquiz/Pages/ratinggame/gameoverpage.dart';
 import 'package:geoquiz/Tools/Helper.dart';
 import 'package:geoquiz/Widgets/counter.dart';
 import 'package:geoquiz/Widgets/healthCounter.dart';
@@ -10,21 +11,21 @@ import 'Home.dart';
 
 class GameUI extends StatefulWidget {
   final bool coc;
-  final bool cbp;
+
   final bool cbf;
-  GameUI({Key? key, required this.coc, required this.cbf, required this.cbp}) : super(key: key);
+  GameUI({Key? key, required this.coc, required this.cbf}) : super(key: key);
 
 
   @override
-  State<GameUI> createState() => _GameUIState(coc: coc, cbf: cbf, cbp: cbp);
+  State<GameUI> createState() => _GameUIState(coc: coc, cbf: cbf);
 }
 
 class _GameUIState extends State<GameUI> {
   final bool coc;
-  final bool cbp;
+
   final bool cbf;
 
-  _GameUIState({required this.coc, required this.cbf, required this.cbp});
+  _GameUIState({required this.coc, required this.cbf});
 
   GameLogic gameLogic = GameLogic();
 
@@ -38,21 +39,16 @@ class _GameUIState extends State<GameUI> {
 
   Future<void> onInit() async {
     await gameLogic.setStars();
-    gameLogic.setQuestionList(coc: coc, cbf: cbf, cbp: cbp);
+    gameLogic.setQuestionList(coc: coc, cbf: cbf);
     gameLogic.getQuestion();
     await gameLogic.setHealth();
     gameLogic.gameStart();
-    gameLogic.questionStream.listen((event) {
-      print('bb ' + event.toString());
-    });
     gameLogic.gameOverStream.listen((event) {
-      print(event);
       if (event) {
-        print(event);
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) => Home(),
+            builder: (BuildContext context) => GameOver(),
           ),
         );
       }
@@ -84,7 +80,6 @@ class _GameUIState extends State<GameUI> {
                           }
                       ),
                       Expanded(child: Container()),
-
                       Expanded(child: Container()),
                       StreamBuilder<int>(
                           initialData: 0,
